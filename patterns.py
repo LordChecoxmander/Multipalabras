@@ -22,5 +22,41 @@ pattern_esp_1 = [
 pattern_esp_2 = [
                 {'POS' : {'IN' : ['NOUN', 'ADJ']}}, 
                 {'POS' : {'IN' : ['NOUN', 'ADJ', 'PROPN']}, 'OP' : '?'}, 
-
 ];
+
+pattern = [
+  # anchor token: founded
+  {
+    "RIGHT_ID": "founded",
+    "RIGHT_ATTRS": {"ORTH": "founded"}
+  },
+  # founded -> subject
+  {
+    "LEFT_ID": "founded",
+    "REL_OP": ">",
+    "RIGHT_ID": "subject",
+    "RIGHT_ATTRS": {"DEP": "nsubj"}
+  },
+  # "founded" follows "initially"
+  {
+    "LEFT_ID": "founded",
+    "REL_OP": ";",
+    "RIGHT_ID": "initially",
+    "RIGHT_ATTRS": {"ORTH": "initially"}
+  }
+]
+pattern_sin = [
+    # anchor token: founded
+  {
+    "RIGHT_ID": "founded",
+    "RIGHT_ATTRS": {"DEP": {'IN' : ["nsubj", "det"]}}
+  },
+  # founded -> subject
+  {
+    "LEFT_ID": "founded",
+    "REL_OP": ">",
+    "RIGHT_ID": "subject",
+    "RIGHT_ATTRS": {"DEP": "amod"}
+  }
+    
+]

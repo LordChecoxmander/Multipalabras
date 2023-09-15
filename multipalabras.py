@@ -3,6 +3,7 @@ from spacy.matcher import Matcher
 from strings import ejemplo
 import patterns
 import metodos
+from spacy.matcher import DependencyMatcher
 
 nlp_es = spacy.load("es_dep_news_trf")
 
@@ -11,8 +12,10 @@ nlp_es = spacy.load("es_dep_news_trf")
 *************** MATCHER **********************************
 """
 
-matcher = Matcher(nlp_es.vocab)
-matcher.add("bigramas", [patterns.pattern_esp_1, patterns.pattern_esp_2])
+#matcher = Matcher(nlp_es.vocab)
+matcher = DependencyMatcher(nlp_es.vocab)
+#matcher.add("bigramas", [patterns.pattern_esp_1, patterns.pattern_esp_2])
+matcher.add("bigramas_dep", [patterns.pattern_sin])
 
 """
 ************** PASAJE DE TEXTO A SU RAIZ **********************************
@@ -33,11 +36,20 @@ matches = matcher(doc)
 *********************** OUTPUTS *********************************
 """
 
-estrucutra_final = metodos.armar_estructura(doc, matches);
-"""
+#estrucutra_final = metodos.armar_estructura(doc, matches);
+lista_token = []
 print("Esto seria: TEXT - DEP - POS")
 for token in doc:
     print("Token:", token.text, token.dep_, token.pos_ )
+    lista_token.append(token)
+print("Resultados Matcher")
+print(matches)
+for match_id, aux in matches:
+    print("match sintactico...")
+    print(lista_token[aux[0]])
+    print(lista_token[aux[0]].dep_)
+    print(lista_token[aux[1]])
+"""
 print(doc)
 #print(matches)
 #print("Resultados:", [lemma_doc[start:end].text for match_id, start, end in matches])

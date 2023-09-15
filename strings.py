@@ -6,7 +6,9 @@ ejemplo1 = """los ingenieros agronomos detectaron plantas rojas,
             el agua nieve se derrite
             multipalabra"""
 
-ejemplo = """la cuenta bancaria no tiene saldo,
+ejemplo = """
+            la cabra y la vaca lechera comen pasto,
+            la cuenta bancaria no tiene saldo,
             las cuentas bancarias no tienen saldo,
             la cuenta bancararia transfirio dinero a otra cuenta bancaria,
             la cuenta bancaria recibio un deposito,
@@ -23,7 +25,7 @@ ejemplo = """la cuenta bancaria no tiene saldo,
             el deposito bancario fue rechazado
             """
 
-ejemplo2 = """
+ejemplo1 = """
             las cuentas bancarias del banco central estan vacias,
             las cuentas bancarias del banco provicia estan vacias,
 """
